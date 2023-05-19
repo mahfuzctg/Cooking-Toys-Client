@@ -1,14 +1,39 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
+import app from "../Firebase/firebase.config";
 
+const auth = getAuth(app);
 const Resister = () => {
+  const handleRegister = (event) => {
+    event.preventDefault();
+    const email = event.target.email.value;
+    const password = event.target.password.value;
+    const name = event.target.name.value;
+    const photo = event.target.photo.value;
+    console.log(email, password, name, photo);
+
+    // crate user from firebase
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.error(error.message);
+      });
+  };
   return (
     <div className="hero  bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center ">
           <h1 className="text-5xl font-bold text-rose-950">Register Please!</h1>
         </div>
-        <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-rose-100 ">
+        <form
+          onSubmit={handleRegister}
+          className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-rose-100 "
+        >
           <div className="card-body">
             <div className="form-control">
               <label className="label">
@@ -16,6 +41,7 @@ const Resister = () => {
               </label>
               <input
                 type="name"
+                name="name"
                 placeholder="name"
                 required
                 className="input input-bordered glass"
@@ -25,6 +51,7 @@ const Resister = () => {
               </label>
               <input
                 type="email"
+                name="email"
                 placeholder="email"
                 required
                 className="input input-bordered glass"
@@ -36,6 +63,7 @@ const Resister = () => {
               </label>
               <input
                 type="password"
+                name="password"
                 placeholder="password"
                 required
                 className="input input-bordered glass"
@@ -47,6 +75,7 @@ const Resister = () => {
               </label>
               <input
                 type="photo"
+                name="photo"
                 placeholder="photo url"
                 required
                 className="input input-bordered glass"
@@ -66,7 +95,7 @@ const Resister = () => {
               </p>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );

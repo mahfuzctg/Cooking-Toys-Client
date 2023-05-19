@@ -2,13 +2,19 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const handleLogin = () => {
+    alert("clicked");
+  };
   return (
     <div className=" bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold text-rose-950">Login Please!</h1>
         </div>
-        <div className="card w-full max-w-sm shadow-2xl bg-rose-100 ">
+        <form
+          onSubmit={handleLogin}
+          className="card w-full max-w-sm shadow-2xl bg-rose-100 "
+        >
           <div className="card-body">
             <div className="form-control">
               <label className="label">
@@ -17,6 +23,8 @@ const Login = () => {
               <input
                 type="email"
                 placeholder="email"
+                name="email"
+                id="email"
                 required
                 className="input input-bordered glass"
               />
@@ -28,6 +36,8 @@ const Login = () => {
               <input
                 type="password"
                 placeholder="password"
+                name="password"
+                id="password"
                 required
                 className="input input-bordered glass"
               />
@@ -38,7 +48,9 @@ const Login = () => {
               </label>
               <input
                 type="photo"
+                name="photo"
                 placeholder="photo url"
+                id="photo"
                 required
                 className="input input-bordered glass"
               />
@@ -57,7 +69,7 @@ const Login = () => {
               </p>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
