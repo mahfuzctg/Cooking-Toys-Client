@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import app from "../Firebase/firebase.config";
+import { authContext } from "../Providers/AuthProviders";
 
 const auth = getAuth(app);
 const Resister = () => {
+  const { user } = useContext(authContext);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
