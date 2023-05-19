@@ -1,9 +1,31 @@
-import React from "react";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import app from "../Firebase/firebase.config";
 
+const auth = getAuth(app);
 const Login = () => {
-  const handleLogin = () => {
-    alert("clicked");
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  // here are handleLogin
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photo = form.photo.value;
+    console.log(email, password, photo);
+
+    signInWithEmailAndPassword(auth, email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        setSuccess("Successfully logged!");
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
   };
   return (
     <div className=" bg-base-200">
@@ -63,6 +85,10 @@ const Login = () => {
               />
             </div>
             <div>
+              <p className=" text-red-950">{error}</p>
+              <p className="text-green-5000 glass text-center rounded-xl">
+                {success}
+              </p>
               <p>
                 New to cooking toys?
                 <Link to="/register">Register</Link>
