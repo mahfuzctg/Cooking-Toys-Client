@@ -1,12 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth";
 import app from "../Firebase/firebase.config";
 
 const auth = getAuth(app);
 const Resister = () => {
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
+
+  // here are handleResister
   const handleRegister = (event) => {
     event.preventDefault();
+    setSuccess("");
     const email = event.target.email.value;
     const password = event.target.password.value;
     const name = event.target.name.value;
@@ -19,9 +24,13 @@ const Resister = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        event.target.reset();
+        setSuccess("Successfully registered!");
+        setError("");
       })
       .catch((error) => {
         console.error(error.message);
+        setError(error.message);
       });
   };
   return (
@@ -89,6 +98,10 @@ const Resister = () => {
               />
             </div>
             <div>
+              <p className=" text-rose-950">{error}</p>
+              <p className=" text-green-500 text-center rounded-2xl glass">
+                {success}
+              </p>
               <p>
                 Already registered?
                 <Link to="/login">Login</Link>
