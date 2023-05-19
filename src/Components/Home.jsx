@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import About from "./About";
+import Gallery from "./Gallery";
 
 const Home = () => {
   return (
@@ -33,6 +34,9 @@ const Home = () => {
 
       <div className="container mx-auto">
         <About></About>
+      </div>
+      <div className="container mx-auto">
+        <Gallery></Gallery>
       </div>
     </>
   );
