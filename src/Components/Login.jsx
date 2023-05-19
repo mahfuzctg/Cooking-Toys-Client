@@ -7,6 +7,7 @@ const auth = getAuth(app);
 const Login = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [show, setShow] = useState(false);
 
   // here are handleLogin
   const handleLogin = (event) => {
@@ -22,6 +23,7 @@ const Login = () => {
         const loggedUser = result.user;
         console.log(loggedUser);
         setSuccess("Successfully logged!");
+        setError("");
       })
       .catch((error) => {
         setError(error.message);
@@ -56,13 +58,18 @@ const Login = () => {
                 <span className="label-text ">Password</span>
               </label>
               <input
-                type="password"
+                type={show ? "text" : "password"}
                 placeholder="password"
                 name="password"
                 id="password"
                 required
                 className="input input-bordered glass"
               />
+              <p onClick={() => setShow(!show)}>
+                <small className="p-2 font-bold">
+                  {show ? <span>Hide</span> : <span>Show</span>}
+                </small>
+              </p>
             </div>
             <div className="form-control">
               <label className="label">
