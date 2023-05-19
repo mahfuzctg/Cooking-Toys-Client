@@ -1,24 +1,21 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import React, { useState } from "react";
+import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import app from "../Firebase/firebase.config";
+import { authContext } from "../Providers/AuthProviders";
 
 const auth = getAuth(app);
 const Login = () => {
+  const googleProvider = new GoogleAuthProvider();
+  const { user, signIn } = useContext(authContext);
+
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [show, setShow] = useState(false);
 
-  // here are handleLogin
-  const handleLogin = (event) => {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    const photo = form.photo.value;
-    console.log(email, password, photo);
-
-    signInWithEmailAndPassword(auth, email, password)
+  // Here are handleGoogleLogin
+  const handleGoogleLogin = () => {
+    signInWithPopup(auth, googleProvider)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
@@ -29,6 +26,27 @@ const Login = () => {
         setError(error.message);
       });
   };
+  // here are handleLogin
+  const handleLogin = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const photo = form.photo.value;
+    console.log(email, password, photo);
+
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+        setSuccess("Successfully logged!");
+        setError("");
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  };
+
   return (
     <div className=" bg-base-200">
       <div className="hero-content flex-col lg:flex-row-reverse">
@@ -65,11 +83,11 @@ const Login = () => {
                 required
                 className="input input-bordered glass"
               />
-              <p onClick={() => setShow(!show)}>
+              <span onClick={() => setShow(!show)}>
                 <small className="p-2 font-bold">
                   {show ? <span>Hide</span> : <span>Show</span>}
                 </small>
-              </p>
+              </span>
             </div>
             <div className="form-control">
               <label className="label">
@@ -91,6 +109,9 @@ const Login = () => {
                 value="Login"
               />
             </div>
+            <button className="btn bg-red-500" onClick={handleGoogleLogin}>
+              Google
+            </button>
             <div>
               <p className=" text-red-950">{error}</p>
               <p className="text-green-5000 glass text-center rounded-xl">

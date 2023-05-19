@@ -6,10 +6,12 @@ import { authContext } from "../Providers/AuthProviders";
 
 const auth = getAuth(app);
 const Resister = () => {
-  const { user } = useContext(authContext);
+  const { user, createUser } = useContext(authContext);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [show, setShow] = useState(false);
 
+  console.log(createUser);
   // here are handleResister
   const handleRegister = (event) => {
     event.preventDefault();
@@ -22,7 +24,7 @@ const Resister = () => {
 
     // crate user from firebase
 
-    createUserWithEmailAndPassword(auth, email, password)
+    createUser(email, password)
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
@@ -73,12 +75,17 @@ const Resister = () => {
                 <span className="label-text ">Password</span>
               </label>
               <input
-                type="password"
+                type={show ? "text" : "password"}
                 name="password"
                 placeholder="password"
                 required
                 className="input input-bordered glass"
               />
+              <span onClick={() => setShow(!show)}>
+                <small className="p-2 font-bold">
+                  {show ? <span>Hide</span> : <span>Show</span>}
+                </small>
+              </span>
             </div>
             <div className="form-control">
               <label className="label">
