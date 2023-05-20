@@ -15,6 +15,7 @@ import Resister from "./Components/Resister";
 import AuthProviders from "./Providers/AuthProviders";
 import PrivateRoute from "./Providers/PrivateRoute";
 import AddToys from "./Components/AddToys";
+import MyToys from "./Components/MyToys";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -34,6 +35,7 @@ const router = createBrowserRouter([
   {
     path: "/all",
     element: <All></All>,
+    loader: () => fetch("http://localhost:5000/addtoys"),
   },
   {
     path: "/login",
@@ -46,6 +48,11 @@ const router = createBrowserRouter([
   {
     path: "/addtoys",
     element: <AddToys></AddToys>,
+  },
+  {
+    path: "/mytoys",
+    element: <MyToys></MyToys>,
+    loader: () => fetch("http://localhost:5000/addtoys"),
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
