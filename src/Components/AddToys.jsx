@@ -1,14 +1,57 @@
 import React from "react";
-
+import Swal from "sweetalert2";
 const AddToys = () => {
+  const handleAddToy = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const quantity = form.quantity.value;
+    const category = form.category.value;
+    const sale = form.sale.value;
+    const toy = form.toy.value;
+    const price = form.price.value;
+    const photo = form.photo.value;
+
+    const newToys = {
+      name,
+      email,
+      quantity,
+      category,
+      sale,
+      toy,
+      price,
+      photo,
+    };
+    console.log(newToys);
+
+    //
+    fetch("http://localhost:5000/addtoys", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newToys),
+    })
+      .then((res) => res.json)
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          alert("wow");
+        }
+      });
+  };
   return (
     <div className=" bg-red-100 m-5">
-      <form>
+      <form onSubmit={handleAddToy}>
         {/*Seller Name and email  */}
         <div className="lg:flex container mx-auto">
-          <form className="form-control lg:w-1/2 mb-2">
+          <div className="form-control lg:w-1/2 mb-2">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
             <label className="input-group">
-              <span>Email</span>
               <input
                 type="email"
                 name="email"
@@ -17,10 +60,12 @@ const AddToys = () => {
                 className="input input-bordered w-full"
               />
             </label>
-          </form>
-          <form className="form-control lg:w-1/2">
+          </div>
+          <div className="form-control lg:w-1/2">
+            <label className="label">
+              <span className="label-text">Name</span>
+            </label>
             <label className="input-group">
-              <span>Name</span>
               <input
                 type="text"
                 name="name"
@@ -29,14 +74,16 @@ const AddToys = () => {
                 className="input input-bordered w-full"
               />
             </label>
-          </form>
+          </div>
         </div>
         <br />
         {/* Photo and Toy name */}
         <div className="lg:flex container mx-auto">
-          <form className="form-control lg:w-1/2 mb-2">
+          <div className="form-control lg:w-1/2 mb-2">
+            <label className="label">
+              <span className="label-text">Photo</span>
+            </label>
             <label className="input-group">
-              <span>Photo</span>
               <input
                 type="text"
                 name="photo"
@@ -45,10 +92,12 @@ const AddToys = () => {
                 className="input input-bordered w-full"
               />
             </label>
-          </form>
-          <form className="form-control lg:w-1/2">
+          </div>
+          <div className="form-control lg:w-1/2">
+            <label className="label">
+              <span className="label-text">Toy Name</span>
+            </label>
             <label className="input-group">
-              <span>Toy name</span>
               <input
                 type="text"
                 name="toy"
@@ -57,13 +106,15 @@ const AddToys = () => {
                 className="input input-bordered w-full"
               />
             </label>
-          </form>
+          </div>
         </div>
         {/* sub category and quantity */}
         <div className="lg:flex container mx-auto">
-          <form className="form-control lg:w-1/2 mb-2">
+          <div className="form-control lg:w-1/2 mb-2">
+            <label className="label">
+              <span className="label-text">Category</span>
+            </label>
             <label className="input-group">
-              <span>Category</span>
               <input
                 type="text"
                 name="category"
@@ -72,10 +123,12 @@ const AddToys = () => {
                 className="input input-bordered w-full"
               />
             </label>
-          </form>
-          <form className="form-control lg:w-1/2">
+          </div>
+          <div className="form-control lg:w-1/2">
+            <label className="label">
+              <span className="label-text">Quantity</span>
+            </label>
             <label className="input-group">
-              <span>Name</span>
               <input
                 type="text"
                 name="quantity"
@@ -84,13 +137,15 @@ const AddToys = () => {
                 className="input input-bordered w-full"
               />
             </label>
-          </form>
+          </div>
         </div>
         {/* Price and rating */}
         <div className="lg:flex container mx-auto">
-          <form className="form-control lg:w-1/2 mb-2">
+          <div className="form-control lg:w-1/2 mb-2">
+            <label className="label">
+              <span className="label-text">Price</span>
+            </label>
             <label className="input-group">
-              <span>Price</span>
               <input
                 type="price"
                 name="price"
@@ -98,10 +153,12 @@ const AddToys = () => {
                 className="input input-bordered w-full"
               />
             </label>
-          </form>
-          <form className="form-control lg:w-1/2">
+          </div>
+          <div className="form-control lg:w-1/2">
+            <label className="label">
+              <span className="label-text">Sale</span>
+            </label>
             <label className="input-group">
-              <span>Sale</span>
               <input
                 type="text"
                 name="sale"
@@ -109,15 +166,15 @@ const AddToys = () => {
                 className="input input-bordered w-full"
               />
             </label>
-          </form>
+          </div>
         </div>
-      </form>
 
-      <input
-        className="btn btn-block mt-2 bg-rose-950 text-red-100 hover:bg-rose-700"
-        type="submit"
-        value="Add a toy"
-      />
+        <input
+          className="btn btn-block mt-2 bg-rose-950 text-red-100 hover:bg-rose-700"
+          type="submit"
+          value="Add a toy"
+        />
+      </form>
     </div>
   );
 };
