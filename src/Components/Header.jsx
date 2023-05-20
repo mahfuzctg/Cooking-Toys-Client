@@ -12,24 +12,33 @@ const Header = () => {
   const navItem = (
     <>
       <li>
-        <Link to="/" className=" no-underline text-2xl font-bold">
+        <Link to="/" className=" no-underline  font-bold">
           Home
         </Link>
       </li>
       <li>
-        <Link to="/all" className=" no-underline text-2xl font-bold">
+        <Link to="/all" className=" no-underline  font-bold">
           All
         </Link>
       </li>
       <li>
-        <Link to="/blog" className=" no-underline text-2xl font-bold">
+        <Link to="/blog" className=" no-underline  font-bold">
           Blog
         </Link>
       </li>
       <li>
-        <Link to="/add" className=" no-underline text-2xl font-bold">
-          Add Toy
-        </Link>
+        {user && (
+          <Link to="/addtoys" className=" no-underline font-bold">
+            Add a Toy
+          </Link>
+        )}
+      </li>
+      <li>
+        {user && (
+          <Link to="/mytoys" className=" no-underline  font-bold">
+            My Toys
+          </Link>
+        )}
       </li>
     </>
   );
@@ -62,13 +71,11 @@ const Header = () => {
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost normal-case text-xl">
-          <>
-            <img
-              className="w-12 lg:w-12 rounded-xl mr-16 lg:ml-8 items-center"
-              src="https://i.postimg.cc/VkwY8M1Q/toy-cooking-logo-2.png"
-              alt=""
-            />
-          </>
+          <img
+            className="w-12 lg:w-12 rounded-xl mr-16 lg:ml-8 items-center"
+            src="https://i.postimg.cc/VkwY8M1Q/toy-cooking-logo-2.png"
+            alt=""
+          />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
@@ -84,7 +91,7 @@ const Header = () => {
             >
               Sign Out
             </button>
-            <span>{user.email}</span>
+            <img className="w-12 rounded-full" src={user.photoURL} alt="" />
           </div>
         ) : (
           <>

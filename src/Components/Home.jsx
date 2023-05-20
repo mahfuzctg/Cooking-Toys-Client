@@ -35,9 +35,9 @@ const Home = () => {
       <div className="container mx-auto">
         <About></About>
       </div>
-      <div className="container mx-auto">
+      <>
         <Gallery></Gallery>
-      </div>
+      </>
     </>
   );
 };

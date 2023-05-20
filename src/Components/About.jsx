@@ -2,7 +2,7 @@ import React from "react";
 
 const About = () => {
   return (
-    <div className="p-8">
+    <>
       <hr />
       <h2 className="text-center rounded-2xl text-rose-950">ABOUT US </h2>
       <div>
@@ -41,7 +41,7 @@ const About = () => {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

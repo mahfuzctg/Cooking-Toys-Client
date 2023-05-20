@@ -14,6 +14,7 @@ import Login from "./Components/Login";
 import Resister from "./Components/Resister";
 import AuthProviders from "./Providers/AuthProviders";
 import PrivateRoute from "./Providers/PrivateRoute";
+import AddToys from "./Components/AddToys";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,19 +29,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/blog",
-    element: (
-      <PrivateRoute>
-        <Blog></Blog>
-      </PrivateRoute>
-    ),
+    element: <Blog></Blog>,
   },
   {
     path: "/all",
-    element: (
-      <PrivateRoute>
-        <All></All>
-      </PrivateRoute>
-    ),
+    element: <All></All>,
   },
   {
     path: "/login",
@@ -49,6 +42,10 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Resister></Resister>,
+  },
+  {
+    path: "/addtoys",
+    element: <AddToys></AddToys>,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
