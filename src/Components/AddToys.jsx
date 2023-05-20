@@ -111,20 +111,13 @@ const AddToys = () => {
             </label>
           </form>
         </div>
-        <div>
-          <form className="form-control lg:w-1/2">
-            <label className="input-group">
-              <span>Sale</span>
-              <input
-                type="text"
-                name="sale"
-                placeholder="Enter selling"
-                className="input input-bordered w-full"
-              />
-            </label>
-          </form>
-        </div>
       </form>
+
+      <input
+        className="btn btn-block mt-2 bg-rose-950 text-red-100 hover:bg-rose-700"
+        type="submit"
+        value="Add a toy"
+      />
     </div>
   );
 };
