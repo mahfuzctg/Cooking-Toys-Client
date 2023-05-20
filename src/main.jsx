@@ -13,6 +13,7 @@ import About from "./Components/About";
 import Login from "./Components/Login";
 import Resister from "./Components/Resister";
 import AuthProviders from "./Providers/AuthProviders";
+import PrivateRoute from "./Providers/PrivateRoute";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -27,11 +28,19 @@ const router = createBrowserRouter([
   },
   {
     path: "/blog",
-    element: <Blog></Blog>,
+    element: (
+      <PrivateRoute>
+        <Blog></Blog>
+      </PrivateRoute>
+    ),
   },
   {
     path: "/all",
-    element: <All></All>,
+    element: (
+      <PrivateRoute>
+        <All></All>
+      </PrivateRoute>
+    ),
   },
   {
     path: "/login",
