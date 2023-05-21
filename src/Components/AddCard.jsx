@@ -13,6 +13,7 @@ const AddCard = ({ addCard }) => {
               {/* <th>1</th> */}
               <th>Seller Name</th>
               <th>Toy Name</th>
+              <th>Sub-Category</th>
               <th>Quantity</th>
               <th>Price</th>
               <th>Details</th>
@@ -24,10 +25,11 @@ const AddCard = ({ addCard }) => {
               {/* <th>1</th> */}
               <td>{name}</td>
               <td>{toy}</td>
+              <td>{category}</td>
               <td>{quantity}</td>
               <td>{price}</td>
               <td>
-                <Link>
+                <Link to="/toyDetails">
                   <button className="btn btn-block bg-red-100 text-red-950">
                     View Details
                   </button>
@@ -37,6 +39,8 @@ const AddCard = ({ addCard }) => {
           </tbody>
         </table>
       </div>
+
+      {}
     </div>
   );
 };

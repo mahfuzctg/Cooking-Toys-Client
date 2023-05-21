@@ -16,6 +16,7 @@ import AuthProviders from "./Providers/AuthProviders";
 import PrivateRoute from "./Providers/PrivateRoute";
 import AddToys from "./Components/AddToys";
 import MyToys from "./Components/MyToys";
+import ToyDetails from "./Components/ToyDetails";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -53,6 +54,10 @@ const router = createBrowserRouter([
     path: "/mytoys",
     element: <MyToys></MyToys>,
     loader: () => fetch("http://localhost:5000/addtoys"),
+  },
+  {
+    path: "toyDetails",
+    element: <ToyDetails></ToyDetails>,
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
