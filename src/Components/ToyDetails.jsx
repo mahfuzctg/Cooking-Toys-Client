@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { authContext } from "../Providers/AuthProviders";
+import { useLoaderData } from "react-router-dom";
 
 const ToyDetails = () => {
-  //
+  const details = useLoaderData();
 
   return (
     <div>
-      <h2>Toy Details </h2>
+      <h3>
+        Details: {details.length} {details._id}
+      </h3>
     </div>
   );
 };

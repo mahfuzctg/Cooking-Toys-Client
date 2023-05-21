@@ -15,7 +15,8 @@ const AddToys = () => {
     const toy = form.toy.value;
     const price = form.price.value;
     const photo = form.photo.value;
-
+    // const rating = form.rating.value;
+    // const description = form.description.value;
     const newToys = {
       name,
       email,
@@ -25,6 +26,8 @@ const AddToys = () => {
       toy,
       price,
       photo,
+      rating,
+      description,
     };
     console.log(newToys);
 
@@ -164,19 +167,34 @@ const AddToys = () => {
             </div>
             <div className="form-control lg:w-1/2">
               <label className="label">
-                <span className="label-text">Sale</span>
+                <span className="label-text">Rating</span>
               </label>
               <label className="input-group">
                 <input
                   type="text"
-                  name="sale"
+                  name="rating"
                   placeholder="Enter selling"
                   className="input input-bordered w-full"
                 />
               </label>
             </div>
           </div>
-
+          {/* Description
+          <div className="form-control w-1/2 mx-auto">
+            <label className="label">
+              <span className="label-text">Description</span>
+            </label>
+            <label className="input-group w-full">
+              <textarea
+                type="message"
+                name="description"
+                id="description"
+                cols="80"
+                rows="5"
+                placeholder="Description"
+              ></textarea>
+            </label>
+          </div> */}
           <input
             className="btn btn-block mt-2 bg-rose-950 text-red-100 hover:bg-rose-700"
             type="submit"

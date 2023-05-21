@@ -52,12 +52,18 @@ const router = createBrowserRouter([
   },
   {
     path: "/mytoys",
-    element: <MyToys></MyToys>,
+    element: (
+      <PrivateRoute>
+        <MyToys></MyToys>
+      </PrivateRoute>
+    ),
     loader: () => fetch("http://localhost:5000/addtoys"),
   },
   {
-    path: "toyDetails",
+    path: "toyDetails/:id",
     element: <ToyDetails></ToyDetails>,
+    loader: ({ params }) =>
+      fetch(`/http://localhost:5000/addtoys/:${params.id}`),
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(
