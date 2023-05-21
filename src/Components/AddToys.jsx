@@ -36,11 +36,15 @@ const AddToys = () => {
       },
       body: JSON.stringify(newToys),
     })
-      .then((res) => res.json)
+      .then((res) => res.json())
       .then((data) => {
         console.log(data);
         if (data.insertedId) {
-          alert("wow");
+          Swal.fire({
+            icon: "success",
+            title: "Good Job!",
+            text: "Added Toy Successfully!",
+          });
         }
       });
   };
