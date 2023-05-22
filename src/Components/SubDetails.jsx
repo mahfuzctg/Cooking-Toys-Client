@@ -23,7 +23,7 @@ const SubDetails = ({ details }) => {
   return (
     <>
       <Header></Header>
-      <div className="">
+      <div>
         <table className="table table-zebra w-full">
           {/* head */}
           <thead>

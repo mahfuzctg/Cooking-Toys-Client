@@ -3,7 +3,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import dynamicTitle from "../dynamicHooks/DynamicTitle";
 
-const MyToysRow = ({ myToy, handleDelete }) => {
+const MyToysRow = ({ my, handleDelete }) => {
   dynamicTitle(`My Toys`);
   const {
     _id,
@@ -16,7 +16,7 @@ const MyToysRow = ({ myToy, handleDelete }) => {
     price,
     photo,
     rating,
-  } = myToy;
+  } = my;
 
   return (
     <div>

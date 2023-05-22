@@ -28,7 +28,7 @@ const All = () => {
           onChange={(e) => setSearch(e.target.value)}
           type="text"
           className="p-1 border"
-        />{" "}
+        />
         <button className="btn btn-secondary" onClick={handleSearch}>
           Search
         </button>

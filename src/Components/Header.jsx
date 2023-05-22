@@ -74,14 +74,17 @@ const Header = () => {
         </div>
 
         <div>
-          <Link to="/" className="btn btn-ghost normal-case text-xl">
+          <Link
+            to="/"
+            className=" text-yellow-50 no-underline items-center normal-case text-xl"
+          >
             <img
-              className="w-12 lg:w-12 rounded-xl lg:ml-8 text-center items-center"
+              className="w-8 lg:w-8 rounded-xl lg:ml-8 text-center items-center"
               src="https://i.postimg.cc/VkwY8M1Q/toy-cooking-logo-2.png"
               alt=""
             />
-            Cooking Toys
           </Link>
+          Cooking Toys
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">

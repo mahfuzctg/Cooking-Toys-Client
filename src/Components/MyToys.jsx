@@ -7,38 +7,64 @@ import Footer from "./Footer";
 import dynamicTitle from "../dynamicHooks/DynamicTitle";
 
 const MyToys = () => {
+  dynamicTitle(`My Toys`);
   const { user } = useContext(authContext);
   const [mytoys, setMyToys] = useState([]);
   // const [deletings, setDeleting] = useState([]);
   console.log(user.email);
   useEffect(() => {
-    fetch(`https://cooking-toys-server.vercel.app/addtoys?email=${user?.email}`)
+    fetch(`http://localhost:5000/addtoys?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setMyToys(data));
   }, [user]);
 
+  // const handleDelete = (id) => {
+  //   const proceed = confirm("are you sure you want to delete?");
+  //   if (proceed) {
+  //     fetch(`http://localhost:5000/${id}`, {
+  //       method: "DELETE",
+  //     })
+  //       .then((res) => res.json())
+  //       .then((d) => {
+  //         console.log(d);
+  //         if (d.deletedCount > 0) {
+  //           Swal.fire({
+  //             icon: "success",
+  //             title: "Thank You!",
+  //             text: "Successfully Deleted!",
+  //           });
+  //           const remaining = mytoys.filter((mytoy) => mytoy._id !== id);
+  //           setMyToys(remaining);
+  //         }
+  //       });
+  //   }
+  // };
   const handleDelete = (id) => {
-    dynamicTitle(`My Toys`);
-    const proceed = confirm("are you sure you want to delete?");
-    if (proceed) {
-      fetch(`https://cooking-toys-server.vercel.app/addtoys/${id}`, {
-        method: "DELETE",
-      })
-        .then((res) => res.json())
-        .then((d) => {
-          console.log(d);
-          if (d.deletedCount > 0) {
-            Swal.fire({
-              icon: "success",
-              title: "Thank You!",
-              text: "Successfully Deleted!",
-            });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/addtoys/${user?._id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount > 0) {
+              Swal.fire("Deleted!", "Your file has been deleted.", "success");
+            }
             const remaining = mytoys.filter((mytoy) => mytoy._id !== id);
             setMyToys(remaining);
-          }
-        });
-    }
+          });
+      }
+    });
   };
+
   return (
     <div>
       <Header></Header>
@@ -46,10 +72,10 @@ const MyToys = () => {
         <h3 className="text-center glass rounded-xl text-red-950">
           Your Toy: {mytoys.length}
         </h3>
-        {mytoys.map((myToy) => (
+        {mytoys.map((my) => (
           <MyToysRow
-            key={myToy._id}
-            myToy={myToy}
+            key={my._id}
+            my={my}
             handleDelete={handleDelete}
           ></MyToysRow>
         ))}

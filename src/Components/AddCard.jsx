@@ -36,7 +36,7 @@ const AddCard = ({ addCard }) => {
           </thead>
           <tbody>
             {/* row 1 */}
-            <tr className=" bg-red-100 text-red-950">
+            <tr className="w-9/12 bg-red-100 text-red-950">
               {/* <th>1</th> */}
               <td>{name}</td>
               <td>{toy}</td>

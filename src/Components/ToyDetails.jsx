@@ -5,7 +5,7 @@ import SubDetails from "./SubDetails";
 
 const ToyDetails = () => {
   const { id } = useParams();
-  const user = useContext(authContext);
+  const { user } = useContext(authContext);
   const [details, setDetails] = useState({});
   useEffect(() => {
     fetch(`https://cooking-toys-server.vercel.app/details/${id}`)
