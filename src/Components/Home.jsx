@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import About from "./About";
 import Gallery from "./Gallery";
+import TabbedCategorySection from "./Tab";
+import FeaturesSection from "./Features";
 
 const Home = () => {
   return (
@@ -37,6 +39,13 @@ const Home = () => {
       </div>
       <>
         <Gallery></Gallery>
+      </>
+
+      <>
+        <TabbedCategorySection></TabbedCategorySection>
+      </>
+      <>
+        <FeaturesSection></FeaturesSection>
       </>
     </>
   );

@@ -36,7 +36,8 @@ const router = createBrowserRouter([
   {
     path: "/all",
     element: <All></All>,
-    loader: () => fetch("http://localhost:5000/addtoys"),
+    loader: () =>
+      fetch("https://cooking-toys-server-mahfuzctg.vercel.app/addtoys"),
   },
   {
     path: "/login",
@@ -57,13 +58,16 @@ const router = createBrowserRouter([
         <MyToys></MyToys>
       </PrivateRoute>
     ),
-    loader: () => fetch("http://localhost:5000/addtoys"),
+    loader: () =>
+      fetch("https://cooking-toys-server-mahfuzctg.vercel.app/addtoys"),
   },
   {
-    path: "toyDetails/:id",
-    element: <ToyDetails></ToyDetails>,
-    loader: ({ params }) =>
-      fetch(`/http://localhost:5000/addtoys/:${params.id}`),
+    path: "/toydetail/:id",
+    element: (
+      <PrivateRoute>
+        <ToyDetails></ToyDetails>
+      </PrivateRoute>
+    ),
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(

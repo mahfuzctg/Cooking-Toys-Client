@@ -4,11 +4,13 @@ import { authContext } from "../Providers/AuthProviders";
 
 const Header = () => {
   const { user, logOut } = useContext(authContext);
+
   const handleLogOut = () => {
     logOut()
       .then(() => {})
       .catch((error) => console.error(error));
   };
+  console.log(user);
   const navItem = (
     <>
       <li>
@@ -84,14 +86,19 @@ const Header = () => {
 
       <div className="navbar-end mr-8">
         {user ? (
-          <div className=" mx-2 flex items-center">
+          <div className=" mx-2 flex items-center gap-3">
             <button
               onClick={handleLogOut}
               className="btn mr-2 bg-pink-100 text-rose-950 glass"
             >
               Sign Out
             </button>
-            <img className="w-12 rounded-full" src={user.photoURL} alt="" />
+
+            <img
+              className="rounded-full w-12 bg-green-500 p-1"
+              src={user?.photoURL}
+              alt=""
+            />
           </div>
         ) : (
           <>

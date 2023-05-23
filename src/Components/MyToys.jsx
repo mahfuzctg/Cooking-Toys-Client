@@ -9,12 +9,11 @@ const MyToys = () => {
   const { user } = useContext(authContext);
   const [mytoys, setMyToys] = useState([]);
 
-  const url = `http://localhost:5000/addtoys?email=${user?.email}`;
   useEffect(() => {
-    fetch(url)
+    fetch(`http://localhost:5000/addtoys?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setMyToys(data));
-  }, [url]);
+  }, [user]);
 
   return (
     <div>

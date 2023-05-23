@@ -6,6 +6,7 @@ import AddCard from "./AddCard";
 
 const All = () => {
   const alls = useLoaderData();
+
   return (
     <div>
       <Header></Header>

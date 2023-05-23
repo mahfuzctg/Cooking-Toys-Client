@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { authContext } from "../Providers/AuthProviders";
 
 const AddCard = ({ addCard }) => {
-  const { name, email, quantity, category, sale, toy, price, photo } = addCard;
+  const { user } = useContext(authContext);
+  const {
+    _id,
+    name,
+    email,
+    quantity,
+    category,
+    sale,
+    toy,
+    price,
+    photo,
+    rating,
+  } = addCard;
   return (
     <div>
       <div className="">
@@ -14,8 +27,8 @@ const AddCard = ({ addCard }) => {
               <th>Seller Name</th>
               <th>Toy Name</th>
               <th>Sub-Category</th>
-              <th>Quantity</th>
               <th>Price</th>
+              <th>Quantity</th>
               <th>Details</th>
             </tr>
           </thead>
@@ -26,10 +39,11 @@ const AddCard = ({ addCard }) => {
               <td>{name}</td>
               <td>{toy}</td>
               <td>{category}</td>
-              <td>{quantity}</td>
               <td>{price}</td>
+              <td>{quantity}</td>
+
               <td>
-                <Link to={`/toyDetails/:${addCard._id}`}>
+                <Link to={`/toydetail/${_id}`}>
                   <button className="btn btn-block bg-red-100 text-red-950">
                     View Details
                   </button>
@@ -39,8 +53,6 @@ const AddCard = ({ addCard }) => {
           </tbody>
         </table>
       </div>
-
-      {}
     </div>
   );
 };

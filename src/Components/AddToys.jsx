@@ -11,18 +11,16 @@ const AddToys = () => {
     const email = form.email.value;
     const quantity = form.quantity.value;
     const category = form.category.value;
-    const sale = form.sale.value;
     const toy = form.toy.value;
     const price = form.price.value;
     const photo = form.photo.value;
-    // const rating = form.rating.value;
-    // const description = form.description.value;
+    const rating = form.rating.value;
+    const description = form.description.value;
     const newToys = {
       name,
       email,
       quantity,
       category,
-      sale,
       toy,
       price,
       photo,
@@ -32,7 +30,7 @@ const AddToys = () => {
     console.log(newToys);
 
     //
-    fetch("http://localhost:5000/addtoys", {
+    fetch("https://cooking-toys-server-mahfuzctg.vercel.app/addtoys", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -67,7 +65,7 @@ const AddToys = () => {
                   type="email"
                   name="email"
                   required
-                  placeholder="Enter your email"
+                  placeholder="user email"
                   className="input input-bordered w-full"
                 />
               </label>
@@ -81,7 +79,7 @@ const AddToys = () => {
                   type="text"
                   name="name"
                   required
-                  placeholder="Enter your name"
+                  placeholder="User name"
                   className="input input-bordered w-full"
                 />
               </label>
@@ -99,7 +97,7 @@ const AddToys = () => {
                   type="text"
                   name="photo"
                   required
-                  placeholder="Enter Photo url"
+                  placeholder="Photo url"
                   className="input input-bordered w-full"
                 />
               </label>
@@ -113,7 +111,7 @@ const AddToys = () => {
                   type="text"
                   name="toy"
                   required
-                  placeholder="Enter toy name"
+                  placeholder="Toy name"
                   className="input input-bordered w-full"
                 />
               </label>
@@ -130,7 +128,7 @@ const AddToys = () => {
                   type="text"
                   name="category"
                   required
-                  placeholder="Enter category name"
+                  placeholder="Category"
                   className="input input-bordered w-full"
                 />
               </label>
@@ -144,7 +142,7 @@ const AddToys = () => {
                   type="text"
                   name="quantity"
                   required
-                  placeholder="Enter quantity"
+                  placeholder="Quantity"
                   className="input input-bordered w-full"
                 />
               </label>
@@ -158,7 +156,7 @@ const AddToys = () => {
               </label>
               <label className="input-group">
                 <input
-                  type="price"
+                  type="text"
                   name="price"
                   placeholder="Enter price"
                   className="input input-bordered w-full"
@@ -173,13 +171,13 @@ const AddToys = () => {
                 <input
                   type="text"
                   name="rating"
-                  placeholder="Enter selling"
+                  placeholder="Rating"
                   className="input input-bordered w-full"
                 />
               </label>
             </div>
           </div>
-          {/* Description
+          Description
           <div className="form-control w-1/2 mx-auto">
             <label className="label">
               <span className="label-text">Description</span>
@@ -194,7 +192,7 @@ const AddToys = () => {
                 placeholder="Description"
               ></textarea>
             </label>
-          </div> */}
+          </div>
           <input
             className="btn btn-block mt-2 bg-rose-950 text-red-100 hover:bg-rose-700"
             type="submit"
