@@ -53,9 +53,11 @@ const MyToysRow = ({ myToy, handleDelete }) => {
               <td>{price}</td>
               <td>{rating}</td>
               <td>
-                <button className="btn btn-block bg-red-100 text-red-950">
-                  Edit
-                </button>
+                <Link to={`/updatedToys/${_id}`}>
+                  <button className="btn btn-block bg-red-100 text-red-950">
+                    Edit
+                  </button>
+                </Link>
               </td>
               <td>
                 <button

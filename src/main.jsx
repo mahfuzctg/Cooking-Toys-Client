@@ -17,6 +17,7 @@ import PrivateRoute from "./Providers/PrivateRoute";
 import AddToys from "./Components/AddToys";
 import MyToys from "./Components/MyToys";
 import ToyDetails from "./Components/ToyDetails";
+import Update from "./Components/Update";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -68,6 +69,16 @@ const router = createBrowserRouter([
         <ToyDetails></ToyDetails>
       </PrivateRoute>
     ),
+  },
+  {
+    path: "/updatedToys/:id",
+    element: (
+      <PrivateRoute>
+        <Update></Update>
+      </PrivateRoute>
+    ),
+    loader: ({ params }) =>
+      fetch(`https://cooking-toys-server.vercel.app/details/${params.id}`),
   },
 ]);
 ReactDOM.createRoot(document.getElementById("root")).render(

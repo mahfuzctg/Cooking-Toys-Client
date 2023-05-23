@@ -1,6 +1,6 @@
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import app from "../Firebase/firebase.config";
 import { authContext } from "../Providers/AuthProviders";
 import Footer from "./Footer";
@@ -14,7 +14,10 @@ const Login = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [show, setShow] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  const from = location.state?.from?.pathname || "/";
   // Here are handleGoogleLogin
   const handleGoogleLogin = () => {
     signInWithPopup(auth, googleProvider)
@@ -23,6 +26,7 @@ const Login = () => {
         console.log(loggedUser);
         setSuccess("Successfully logged!");
         setError("");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError(error.message);
@@ -43,6 +47,7 @@ const Login = () => {
         console.log(loggedUser);
         setSuccess("Successfully logged!");
         setError("");
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError(error.message);
