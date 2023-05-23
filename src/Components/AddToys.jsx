@@ -124,13 +124,15 @@ const AddToys = () => {
                 <span className="label-text">Category</span>
               </label>
               <label className="input-group">
-                <input
-                  type="text"
+                <select
+                  className="text-input  input input-bordered"
                   name="category"
-                  required
-                  placeholder="Category"
-                  className="input input-bordered w-full"
-                />
+                  type="text"
+                >
+                  <option value="little">Little Chefs</option>
+                  <option value="kids">Kids Chefs</option>
+                  <option value="playful">Playful Kitchen</option>
+                </select>
               </label>
             </div>
             <div className="form-control lg:w-1/2">

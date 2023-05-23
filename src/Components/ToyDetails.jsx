@@ -8,7 +8,7 @@ const ToyDetails = () => {
   const user = useContext(authContext);
   const [details, setDetails] = useState({});
   useEffect(() => {
-    fetch(`http://localhost:5000/details/${id}`)
+    fetch(`https://cooking-toys-server.vercel.app/details/${id}`)
       .then((res) => res.json())
       .then((data) => setDetails(data));
   }, [id]);

@@ -9,9 +9,9 @@ const MyToys = () => {
   const { user } = useContext(authContext);
   const [mytoys, setMyToys] = useState([]);
   // const [deletings, setDeleting] = useState([]);
-
+  console.log(user.email);
   useEffect(() => {
-    fetch(`http://localhost:5000/addtoys?email=${user?.email}`)
+    fetch(`https://cooking-toys-server.vercel.app/addtoys?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setMyToys(data));
   }, [user]);
@@ -19,7 +19,7 @@ const MyToys = () => {
   const handleDelete = (id) => {
     const proceed = confirm("are you sure you want to delete?");
     if (proceed) {
-      fetch(`http://localhost:5000/addtoys/${id}`, {
+      fetch(`https://cooking-toys-server.vercel.app/addtoys/${id}`, {
         method: "DELETE",
       })
         .then((res) => res.json())
