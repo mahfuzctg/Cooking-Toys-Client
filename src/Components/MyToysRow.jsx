@@ -1,9 +1,21 @@
+import { data } from "autoprefixer";
 import React from "react";
 import { Link } from "react-router-dom";
 
-const MyToysRow = ({ myToy }) => {
-  const { name, email, quantity, category, toy, sale, price, photo, rating } =
-    myToy;
+const MyToysRow = ({ myToy, handleDelete }) => {
+  const {
+    _id,
+    name,
+    email,
+    quantity,
+    category,
+    toy,
+    sale,
+    price,
+    photo,
+    rating,
+  } = myToy;
+
   return (
     <div>
       <div>
@@ -19,7 +31,8 @@ const MyToysRow = ({ myToy }) => {
               <th>Quantity</th>
               <th>Price</th>
               <th>Rating</th>
-              <th>Details</th>
+              <th>Update</th>
+              <th>Delete</th>
             </tr>
           </thead>
           <tbody>
@@ -40,11 +53,17 @@ const MyToysRow = ({ myToy }) => {
               <td>{price}</td>
               <td>{rating}</td>
               <td>
-                <Link to="/toyDetails">
-                  <button className="btn btn-block bg-red-100 text-red-950">
-                    View Details
-                  </button>
-                </Link>
+                <button className="btn btn-block bg-red-100 text-red-950">
+                  Edit
+                </button>
+              </td>
+              <td>
+                <button
+                  onClick={() => handleDelete(_id)}
+                  className="btn btn-block bg-red-100 text-red-950"
+                >
+                  X
+                </button>
               </td>
             </tr>
           </tbody>
