@@ -1,8 +1,10 @@
 import React from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import dynamicTitle from "../dynamicHooks/DynamicTitle";
 
 const Blog = () => {
+  dynamicTitle(`blogs`);
   return (
     <div>
       <Header></Header>

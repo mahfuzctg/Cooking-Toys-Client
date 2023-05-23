@@ -20,7 +20,7 @@ const Header = () => {
       </li>
       <li>
         <Link to="/all" className=" no-underline  font-bold">
-          All
+          All Toys
         </Link>
       </li>
       <li>
@@ -73,16 +73,15 @@ const Header = () => {
           </ul>
         </div>
 
-        <div className=" items-center text-center justify-center align-middle">
+        <div>
           <Link to="/" className="btn btn-ghost normal-case text-xl">
             <img
-              className="w-12 lg:w-12 rounded-xl mr-16 lg:ml-8 items-center"
+              className="w-12 lg:w-12 rounded-xl lg:ml-8 text-center items-center"
               src="https://i.postimg.cc/VkwY8M1Q/toy-cooking-logo-2.png"
               alt=""
             />
+            Cooking Toys
           </Link>
-
-          <h6 className="items-center">Cooking Toys</h6>
         </div>
       </div>
       <div className="navbar-center hidden lg:flex">

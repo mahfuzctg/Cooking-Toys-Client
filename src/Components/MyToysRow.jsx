@@ -1,8 +1,10 @@
 import { data } from "autoprefixer";
 import React from "react";
 import { Link } from "react-router-dom";
+import dynamicTitle from "../dynamicHooks/DynamicTitle";
 
 const MyToysRow = ({ myToy, handleDelete }) => {
+  dynamicTitle(`My Toys`);
   const {
     _id,
     name,

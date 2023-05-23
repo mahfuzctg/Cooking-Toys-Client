@@ -5,8 +5,10 @@ import app from "../Firebase/firebase.config";
 import { authContext } from "../Providers/AuthProviders";
 import Header from "./Header";
 import Footer from "./Footer";
+import dynamicTitle from "../dynamicHooks/DynamicTitle";
 const auth = getAuth(app);
 const Resister = () => {
+  dynamicTitle(`Register`);
   const { user, createUser } = useContext(authContext);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");

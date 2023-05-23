@@ -4,6 +4,7 @@ import { authContext } from "../Providers/AuthProviders";
 import MyToysRow from "./MyToysRow";
 import Header from "./Header";
 import Footer from "./Footer";
+import dynamicTitle from "../dynamicHooks/DynamicTitle";
 
 const MyToys = () => {
   const { user } = useContext(authContext);
@@ -17,6 +18,7 @@ const MyToys = () => {
   }, [user]);
 
   const handleDelete = (id) => {
+    dynamicTitle(`My Toys`);
     const proceed = confirm("are you sure you want to delete?");
     if (proceed) {
       fetch(`https://cooking-toys-server.vercel.app/addtoys/${id}`, {

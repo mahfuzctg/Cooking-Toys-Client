@@ -5,9 +5,11 @@ import app from "../Firebase/firebase.config";
 import { authContext } from "../Providers/AuthProviders";
 import Footer from "./Footer";
 import Header from "./Header";
+import dynamicTitle from "../dynamicHooks/DynamicTitle";
 
 const auth = getAuth(app);
 const Login = () => {
+  dynamicTitle(`Login`);
   const googleProvider = new GoogleAuthProvider();
   const { user, signIn } = useContext(authContext);
 

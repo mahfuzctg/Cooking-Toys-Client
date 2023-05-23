@@ -4,8 +4,10 @@ import About from "./About";
 import Gallery from "./Gallery";
 import TabbedCategorySection from "./Tab";
 import FeaturesSection from "./Features";
+import dynamicTitle from "../dynamicHooks/DynamicTitle";
 
 const Home = () => {
+  dynamicTitle(`Home`);
   return (
     <>
       <div

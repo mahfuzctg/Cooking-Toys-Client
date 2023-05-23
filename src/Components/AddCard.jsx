@@ -1,8 +1,10 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { authContext } from "../Providers/AuthProviders";
+import dynamicTitle from "../dynamicHooks/DynamicTitle";
 
 const AddCard = ({ addCard }) => {
+  dynamicTitle(`Add Toys`);
   const { user } = useContext(authContext);
   const {
     _id,

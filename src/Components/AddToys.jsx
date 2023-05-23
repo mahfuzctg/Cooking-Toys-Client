@@ -2,7 +2,9 @@ import React from "react";
 import Swal from "sweetalert2";
 import Footer from "./Footer";
 import Header from "./Header";
+import dynamicTitle from "../dynamicHooks/DynamicTitle";
 const AddToys = () => {
+  dynamicTitle(`Add Toys`);
   const handleAddToy = (event) => {
     event.preventDefault();
 
